@@ -24,6 +24,14 @@ public class App {
             System.out.println("Задание №2");
             String ipAddress = Task2.getIpAddress(webDriver);
             System.out.println("IPv4-адрес клиента: " + ipAddress);
+            System.out.println();
+
+            System.out.println("Задание №3");
+            Task3.Forecast forecast = Task3.getForecast(webDriver);
+            String table = Task3.formatForecastTable(forecast);
+            System.out.println(table);
+            Task3.writeForecast(forecast);
+            System.out.println("Таблица сохранена в result/forecast.txt");
         } catch (Exception e) {
             System.out.println("Error");
             System.out.println(e.toString());
