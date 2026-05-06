@@ -1,7 +1,5 @@
 package lair.moe.task7;
 
-import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -44,7 +42,7 @@ public class App {
         webDriver.get(PASSWORD_GENERATOR_URL);
         waitForDocument(webDriver);
 
-        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(15));
+        WebDriverWait wait = new WebDriverWait(webDriver, 15);
         return wait.until(driver -> {
             try {
                 String password = driver.findElement(PASSWORD_RESULT).getText().trim();
@@ -56,7 +54,7 @@ public class App {
     }
 
     private static void waitForDocument(WebDriver webDriver) {
-        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(15));
+        WebDriverWait wait = new WebDriverWait(webDriver, 15);
         wait.until(driver -> ((JavascriptExecutor) driver)
                 .executeScript("return document.readyState")
                 .toString()

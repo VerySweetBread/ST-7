@@ -62,7 +62,7 @@ public class Task3 {
         }
 
         int rowsCount = Math.min(times.size(), Math.min(temperatures.size(), rains.size()));
-        List<ForecastRow> rows = new ArrayList<>();
+        List<ForecastRow> rows = new ArrayList<ForecastRow>();
         for (int i = 0; i < rowsCount; i++) {
             rows.add(new ForecastRow(
                     i + 1,
@@ -104,7 +104,7 @@ public class Task3 {
         private final List<ForecastRow> rows;
 
         Forecast(List<ForecastRow> rows) {
-            this.rows = Collections.unmodifiableList(new ArrayList<>(rows));
+            this.rows = Collections.unmodifiableList(new ArrayList<ForecastRow>(rows));
         }
 
         public List<ForecastRow> getRows() {

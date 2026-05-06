@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
  *
  * The driver path can be passed as the first command line argument,
  * by -Dwebdriver.chrome.driver=/path/to/chromedriver, or by CHROME_DRIVER_PATH.
- * If it is not set, Selenium Manager will try to find a compatible driver.
  */
 final class ChromeDriverFactory {
     private static final String DRIVER_PROPERTY = "webdriver.chrome.driver";
@@ -27,7 +26,7 @@ final class ChromeDriverFactory {
         if (browserBinary != null && !browserBinary.trim().isEmpty()) {
             options.setBinary(browserBinary.trim());
         }
-        if (Boolean.parseBoolean(System.getenv().getOrDefault("HEADLESS", "false"))) {
+        if (Boolean.parseBoolean(getEnvOrDefault("HEADLESS", "false"))) {
             options.addArguments("--headless=new");
         }
         options.addArguments("--remote-allow-origins=*");
@@ -51,5 +50,10 @@ final class ChromeDriverFactory {
         if (driverPath != null && !driverPath.trim().isEmpty()) {
             System.setProperty(DRIVER_PROPERTY, driverPath.trim());
         }
+    }
+
+    private static String getEnvOrDefault(String key, String defaultValue) {
+        String value = System.getenv(key);
+        return value == null ? defaultValue : value;
     }
 }
