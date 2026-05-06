@@ -19,6 +19,11 @@ public class App {
             System.out.println("Задание №1");
             String password = generatePassword(webDriver);
             System.out.println("Сгенерированный пароль: " + password);
+            System.out.println();
+
+            System.out.println("Задание №2");
+            String ipAddress = Task2.getIpAddress(webDriver);
+            System.out.println("IPv4-адрес клиента: " + ipAddress);
         } catch (Exception e) {
             System.out.println("Error");
             System.out.println(e.toString());
